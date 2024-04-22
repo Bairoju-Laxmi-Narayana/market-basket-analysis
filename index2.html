@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Algorithms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .button {
+            display: block;
+            width: 200px;
+            margin: 0 auto 20px;
+            padding: 15px 20px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Python Algorithms</h1>
+        <button onclick="executePythonProgram('C:/Users/91934/Documents/major project/apriori.py')" class="button">Apriori</button>
+        <button onclick="executePythonProgram('C:/Users/91934/Documents/major project/fpgrowth.py')" class="button">FP Growth</button>
+        <button onclick="executePythonProgram('C:/Users/91934/Documents/major project/eclat.py')" class="button">Eclat</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function executePythonProgram(path) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("result").innerHTML = this.responseText;
+                }
+            };
+            // Replace "execute_program.py" with the appropriate URL or path to your server script
+            xhttp.open("GET", "http://localhost:5000/execute_program?path=" + encodeURIComponent(path), true);
+
+            xhttp.send();
+        }
+    </script>
+</body>
+</html>
